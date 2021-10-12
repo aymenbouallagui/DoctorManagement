@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    {%load static%}
+    {% load widget_tweaks %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'vendors/css/all.css'%}" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
+
+    
+    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css'%}">
+  
+    <link href="{% static 'ressources/fullcalendar/packages/core/main.css'%}" rel='stylesheet' />
+    <link href="{% static 'ressources/fullcalendar/packages/daygrid/main.css'%}" rel='stylesheet' />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+      crossorigin="anonymous"
+    />
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'vendors/css/bootstrap.min.css'%}">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="{% static 'ressources/css/stylecalendrier.css'%}">
+    <link rel="stylesheet" href="{% static 'ressources/css/styledashuser.css'%}" />
+
+    <title>Dashboard Doctor</title>
+    <script>
+      function allowDrop(ev) {
+        ev.preventDefault();
+      }
+      
+      function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+      }
+      
+      function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+      }
+      </script>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-md-2 sidebar" id="sidebar">
+        <div
+          class="sidebar-head d-flex justify-content-center align-items-center"
+        >
+          <img
+            src="{%static 'ressources/img/profile.jpg'%}"
+            style="
+              height: 100px;
+              width: 100px;
+              border-radius: 50%;
+              margin: 0;
+              padding: 0;
+            "
+            alt="profile picture"
+          />
+        </div>
+        <div>
+          <ul class="list-group mb-5">
+            <a class="list-group-item activée" href="/doctordash1"
+              ><span><i class="fas fa-home"></i></span>Tableau de Bord</a
+            >
+            <a class="list-group-item" href="/doctordash2"
+              ><span><i class="far fa-calendar-alt"></i></span>calendar</a
+            >
+            <a class="list-group-item" href="/doctordash3"
+              ><span><i class="fas fa-users"></i></span>mes patients</a
+            >
+            <a class="list-group-item" href="/doctordash4"
+              ><span><i class="fas fa-file-alt"></i></span> Consultations</a
+            >
+            <a class="list-group-item" href="/doctordash5"
+              ><span><i class="far fa-file-alt"></i></span> Certifs
+            </a>
+            <a class="list-group-item" href="/doctordash6"
+              ><span><i class="fas fa-file-medical"></i></span>Ordenances
+            </a>
+            <a class="list-group-item item10" href="/doctordash7"><i class="far fa-file-alt"></i></span>Assurances</a>
+            <a class="list-group-item" href="/doctordash8"
+              ><span> <i class="fas fa-money-check-alt"></i> </span>Paiements</a
+            >
+            <a class="list-group-item" href="/doctordash9"
+              ><span><i class="far fa-file-alt"></i></span> Médicaments</a
+            >
+            <a
+              href="/logout"
+              class="btn empty exit mt-5 ml-auto mr-auto"
+              style="border-radius: 35px"
+              >Déconnexion</a
+            >
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-10 content mt-0 pt-0 mx-auto">
+        <a
+          class="btn mt-3 ml-2"
+          onclick="myFunction()"
+          style="color: #0097e6; font-size: 30px !important;"
+          ><i class="fas fa-bars"></i
+        ></a>
+        <div class="container- text-center calendar mx-auto" style="width: 95%; height: 100%;">
+          <button class="open-button btn-pop-up full-pop-up" style="padding: 5px 10px; font-size: 16px; border-radius:5px;" onclick="openForm()">Nouveau rendez-vous</button>
+    <button class="open-button btn-pop-up full-pop-up" style="padding: 5px 10px; font-size: 16px; border-radius:5px;" onclick="openForm2()">Liste des demandes de Rendez-Vous</button>
+          
+          <div
+            id='calendar'></div>
+        </div>
+        <div class="container-form">
+          <div class="form-popup form1" id="form">
+            <form method="post">
+              {%csrf_token%}
+              <h2 style="color:white !important;">Nouveau<br>&nbsp; Rendez-Vous</h2>
+              <div class="form-group-pop-up">
+
+                {% render_field form.patient type="text" class="form-control-pop-up" %}
+              </div>
+              <div class="form-group-pop-up">
+
+                {% render_field form.etat_rdv type="text" class="form-control-pop-up" %}
+              </div>
+              <div class="form-group-pop-up">
+                {% render_field form.date type="datetime-local" class="form-control-pop-up" %}
+                <br />
+                <div style="margin-left:auto ; margin-right: auto; ">
+                  <button type="submit" class="btn-pop-up empty-pop-up" style="background-color: #4cd137; border: 1px solid #4cd137; color: white; margin-right: 5px; padding: 10px 15px; font-size: 16px; border-radius:5px;">Submit</button>
+                  <button type="button" class="btn-pop-up empty-pop-up exit-pop-up"style="margin-right: 5px; padding: 10px 15px; font-size: 16px; border-radius:5px;" onclick="openForm()">Close</button>
+                </div>
+              </div>
+              
+            </form>
+          </div>
+          </div>
+          <!--pop up formulaire-->
+        <div class="container-form">
+          <div class="form-popup form2" style="background-color:white ; border-color: #0097e6;" id="form2">
+            <div class="container text-center">
+              <h1>Rendez-Vous Non Confirmé</h1>
+              <p style="  font-family: 'Lato', sans-serif; font-size:20px; color:#c23616;">Il Faut enregistrer les Visiteur dans les patients !</p>
+              <table class="table">
+                <thead>
+                  <th>Num</th>
+                  <th>Nom et Prénom</th>
+                  <th>tél</th>
+                  <th>Email</th>
+                  <th>Role</th>
+
+                </thead>
+                <tbody>
+                {%for i in vis%}
+                  <tr>
+                    <td data-label="#">{{i.id_v}}</td>
+                    <td data-label="Nom etPrénom">{{i.nom}} {{i.prenom}}</td>
+                    <td data-label="tél">{{i.phone}}</td>
+                    <td data-label="Email">{{i.email}}</td>
+                    <td id="role"></td>
+                    <script>
+                      var a = {{i.role}};
+                      if (a =="1"){
+                        document.getElementById("role").innerHTML = "Patient";
+                      }
+                      else {
+                        document.getElementById("role").innerHTML = "Autre";
+                      }
+                    </script>
+                  </tr>
+                {%endfor%}
+                </tbody>
+              </table>
+              <button type="button" class="btn-pop-up empty-pop-up exit-pop-up"style="margin-right: 5px; padding: 10px 15px; font-size: 16px; border-radius:5px;" onclick="openForm2()">Close</button>
+            </div>
+          </div>
+          </div>
+      </div>
+    </div>
+    
+
+    <script src="{% static 'ressources/js/jquery-3.3.1.min.js'%}"></script>
+    <script src="{% static 'ressources/js/popper.min.js'%}"></script>
+    <script src="{% static 'ressources/js/bootstrap.min.js'%}"></script>
+
+    <script src="{% static 'ressources/fullcalendar/packages/core/main.js'%}"></script>
+    <script src="{% static 'ressources/fullcalendar/packages/interaction/main.js'%}"></script>
+    <script src="{% static 'ressources/fullcalendar/packages/daygrid/main.js'%}"></script>
+    <script src="{% static 'ressources/fullcalendar/packages/timegrid/main.js'%}"></script>
+    <script src="{% static 'ressources/fullcalendar/packages/list/main.js'%}"></script>
+
+    
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+ 
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      plugins: [ 'interaction', 'dayGrid', 'timeGrid', 'list' ],
+      height: 'parent',
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,listWeek'
+      },
+      defaultView: 'dayGridMonth',
+      defaultDate: new Date(),
+      slectable: true ,
+      selectHelper: true ,
+      navLinks: true, // can click day/week names to navigate views
+      editable: true,
+      eventLimit: true, // allow "more" link when too many events
+      events: [
+
+        {%for j in rdv%}
+        {
+        title:'{{j.patient}}',
+        start:'{{j.date.date|date:"Y-m-d"}}T{{j.date.time|time:"H:i:s"}}'
+        },
+        {%endfor%}
+        
+      ]
+    });
+
+    calendar.render();
+  });
+
+    </script>
+    <script>
+      function openForm() {
+      var element = document.getElementById("form");
+          element1=document.querySelector(".form2");
+      if (element1.classList.contains("form-toggle")){}
+      else{
+      element.classList.toggle("form-toggle");}
+  }
+  function openForm2() {
+      var element = document.getElementById("form2");
+          element1=document.querySelector(".form1");
+      if (element1.classList.contains("form-toggle")){}
+      else{
+      element.classList.toggle("form-toggle");}
+  }
+  
+    </script>
+
+    <script src="{% static 'ressources/js/main.js'%}"></script>
+    <script src="{% static 'ressources/js/scriptsidebar.js'%}"></script>
+  </body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+{% extends 'Doctor/sidebardoc.html'%}
+
+  <head>
+    {% load static %}
+    {% load widget_tweaks %}
+   <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{%static 'vendors/css/all.css'%}" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Asap&family=Lato:wght@100;300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="{%static 'ressources/css/styledashuser.css'%}" />
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=GA3x1aHWnkRFnRVlYUAtGjgL_I3f5vZMR_0IddIKJKUPQbdvXnur_SVMUWZJdqIfUoozdjo5ZGjwtsXleJXZNfwsLcgCTxj3lfiq9aIxCzeb4vQaCmofjzHyJ-N7z36UQU_ZM2yzgRbpouWv6X9lNnFUz2I5NQoEoZ4vEbrVbl3z_zdoX3so0TTBOwQWtVT524uAiKQaI4QR_VwsGz38lGwZ-8z00NIUwSwjBCLaUzgESC-hFCHVwNTr7EXikYVrGnVuPQFjL8XwwimWhMUTPI236IXt6QI0wKKeaGL_ipveSibNyW_Z27EpCNoCvKptaHvJf6XklDgBlavb0uWFE_8Sl_Ef5wh-SxZ06hAZNo4" charset="UTF-8"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <title>Dashboard Doctor</title>
+
+  </head>
+ {% block content %}
+<body>
+    <div class="row">
+
+      <div class="col-md-10 content">
+        <a
+          class="btn mt-3 ml-2"
+          onclick="myFunction()"
+          style="color: #0097e6; font-size: 150%"
+          ><i class="fas fa-bars"></i
+        ></a>
+
+        <div class="container text-center mt-5 mb-5">
+          <button
+            class="btn empty mb-5"
+            data-toggle="collapse"
+            href="#form"
+            role="button"
+            aria-expanded="false"
+            aria-controls="collapseExample"
+          >
+            <span><i class="far fa-plus-square"></i></span> Nouvelle Ordenance
+          </button>
+          <div id="form">
+            <form method="post">
+              {%csrf_token%}
+              <div class="form-group pt-3">
+                  <label>Patient</label>
+                  {% render_field form.patient type="text" class="form-control" %}
+              </div>
+              <div class="form-group">
+                  <label>Maladie</label>
+                {% render_field form.maladies type="text" class="form-control" %}
+              </div>
+              <div class="form-group">
+                  <label>Medicament (clicker ctrl pour selectionner plusieurs) </label>
+                {% render_field form.medicaments type="text" class="form-control" %}
+              </div>
+              <br/>
+              <button type="submit" class="btn empty">enregistrer</button>
+            </form>
+          </div>
+        </div>
+        <div class="container text-center">
+          <h1>Ordenances</h1>
+          <table class="table">
+            <thead>
+              <th>Id Ordenances</th>
+              <th>Date Et Heure</th>
+              <th>Nom Patient</th>
+              <th>Médicaments</th>
+            </thead>
+            <tbody>
+             {%for i in ord%}
+              <tr>
+                <td data-label="Id Ordenance">{{i.id_ord}}</td>
+                <td data-label="Date et Heure">{{i.date}}</td>
+                <td data-label="Nom Patient">{{i.patient.user.first_name}} {{i.patient.user.last_name}}</td>
+                  {%for j in i.medicaments.all%}
+                <td data-label="Médicaments">{{j}}</td>
+                  {%endfor%}
+              </tr>
+             {%endfor%}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!--back to top button-->
+    <a
+      id="back-to-top"
+      href="#"
+      class="btn btn-light btn-lg back-to-top"
+      role="button"
+      ><i class="fas fa-chevron-up"></i
+    ></a>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+      integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+      crossorigin="anonymous"
+    ></script>
+    <script src="{%static 'ressources/js/scriptsidebar.js'%}"></script>
+    <script>
+      $(".dropdown dt a").on('click', function() {
+  $(".dropdown dd ul").slideToggle('fast');
+});
+
+$(".dropdown dd ul li a").on('click', function() {
+  $(".dropdown dd ul").hide();
+});
+
+function getSelectedValue(id) {
+  return $("#" + id).find("dt a span.value").html();
+}
+
+$(document).bind('click', function(e) {
+  var $clicked = $(e.target);
+  if (!$clicked.parents().hasClass("dropdown")) $(".dropdown dd ul").hide();
+});
+
+$('.mutliSelect input[type="checkbox"]').on('click', function() {
+
+  var title = $(this).closest('.mutliSelect').find('input[type="checkbox"]').val(),
+    title = $(this).val() + ",";
+
+  if ($(this).is(':checked')) {
+    var html = '<span title="' + title + '">' + title + '</span>';
+    $('.multiSel').append(html);
+    $(".hida").hide();
+  } else {
+    $('span[title="' + title + '"]').remove();
+    var ret = $(".hida");
+    $('.dropdown dt a').append(ret);
+
+  }
+});
+    </script>
+  </body>
+{% endblock %}

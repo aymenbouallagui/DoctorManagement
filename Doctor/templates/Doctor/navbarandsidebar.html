@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'vendors/css/all.css'%}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Asap&family=Lato:wght@100;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="{%static 'ressources/css/styledashuser.css'%}">
+    <title>Dashboard User</title>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark sticky-top" id="main-nav">
+        <div class="container">
+            <a href="patientview.html" class="navbar-brand">
+                <span id="dr">Dr.</span>
+                <span>Koussay</span>
+            </a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a href="patientview.html" class="nav-link home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="patientview.html #offers" class="nav-link">Offers</a>
+            </li>
+            <li class="nav-item">
+                <a href="patientview.html #gallery" class="nav-link">Gallery</a>
+            </li>
+            <li class="nav-item">
+                <a href="patientview.html #tarif" class="nav-link">Tarif</a>
+            </li>
+            <li class="nav-item">
+                <a href="patientview.html #mobile-app" class="nav-link">Mobile-App</a>
+            </li>
+            <li class="nav-item">
+                <a href="patientview.html #rendez-vous" class="nav-link">Rendez-vous</a>
+            </li>
+            <li class="nav-item">
+                <a href="/logout" class="btn empty exit">Déconnexion</a>
+            </li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col-md-2 sidebar">
+            <div class="sidebar-head d-flex">
+                <img src="{%static 'ressources/img/profile.jpg'%}" alt="profile picture">
+                {% if user.is_authenticated %}
+                   <p>{{user.username}}</p>
+                {% endif %}
+            </div>
+            <div>
+                <ul class="list-group mb-5">
+                    {% if user.is_authenticated %}
+                        <a class="list-group-item" content="time; URL=new_url" href="/dashboard/{{user.username}}"><span><i class="fas fa-book-medical"></i></span>Affichage</a>
+                        <a class="list-group-item" href="/dashboard3/{{user.username}}"><span><i class="fas fa-id-card-alt"></i></span>Assurances</a>
+                        <a class="list-group-item" href="dashboarduserfiche.html"><span><i class="fas fa-file-alt"></i></span> fiche Patient</a>
+                        <a class="list-group-item activée"  content="time; URL=new_url" href="/dashboard2/{{user.username}}"><span><i class="fas fa-user-clock"></i></span> Mes Rendez-vous</a>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+         {% block content %}
+
+
+
+         {% endblock %}
+
+            
+                <!---------------------------------------------------------------------------------------------------
+                --------------------------------Contenu de la page---------------------------------------------------
+                ---------------------------------------------------------------------------------------------------->
+        </div>
+
+    </div>
+
+
+    <!--back to top button-->
+    <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"><i class="fas fa-chevron-up"></i></a>
+
+
+
+
+
+
+
+
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+  <script src="{%static 'ressources/js/script.js'%}"></script>
+</body>
+</html>

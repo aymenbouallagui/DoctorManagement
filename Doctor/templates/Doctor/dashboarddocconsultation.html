@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+{% extends 'Doctor/sidebardoc.html'%}
+<head>
+  {% load static %}
+  {% load widget_tweaks %}
+     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'vendors/css/all.css'%}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Asap&family=Lato:wght@100;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="{%static 'ressources/css/styledashuser.css'%}">
+    <title>Dashboard Doctor</title>
+</head>
+ {% block content %}
+<body>
+
+    <div class="row">
+
+        <div class="col-md-10 content">
+          <a class="btn mt-3 ml-2" onclick="myFunction()" style="color:#0097e6; font-size: 150%;"><i class="fas fa-bars"></i></a>
+
+                <div class="container text-center mt-5 mb-5">
+                    <button class="btn empty mb-5" data-toggle="collapse" href="#form" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        <span><i class="far fa-plus-square"></i></span> Nouvelle Consultation
+                    </button>
+                    <div id="form">
+                        <form method="post">
+                          {%csrf_token%}
+                            <div class="form-group">
+                                <label> Patient :</label>
+                                {% render_field form.patient type="text" class="form-control" placeholder="Patient"%}
+                            </div>
+
+                            <div class="form-group">
+                                <label> Temps de rendez vous</label>
+                                {% render_field form.date type="datetime-local" class="form-control" %}
+                            </div>
+
+
+                            <br>
+                            <button type="submit" value="submit" class="btn empty">Submit</button>
+                        </form>
+                    </div>
+                </div>
+        <div class="input-group rounded mt-5 mb-5 ml-auto mr-auto" style="width:60%;">
+                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                  aria-describedby="search-addon" />
+                <button class="btn full" href="#">
+                  <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <div class="container text-center">
+                <h1>Toutes les Consultations</h1>
+                    <table class="table">
+
+                        <thead>
+                            <th>id</th>
+                            <th>Nom</th>
+
+                            <th>Date et heure de la consultation</th>
+
+                            <th>Paiement</th>
+                        </thead>
+                        <tbody>
+                        {%for i in consu%}
+                            <tr>
+                                <td data-label="id">{{i.id_consult}}</td>
+                                <td data-label="Nom">{{i.patient.user.first_name}} {{i.patient.user.last_name}}  </td>
+                                <td data-label="Date et heure de la consultation">{{i.date}}</td>
+
+                                <td><a class="btn full" onclick="pay()">Payer</td>
+                            </tr>
+                            <script>
+                                function pay() {
+                                window.location.replace("/payer/{{i.id_consult}}");
+                                }
+                            </script>
+
+                        {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+
+        </div>
+    </div>
+    <!--back to top button-->
+    <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"><i class="fas fa-chevron-up"></i></a>
+
+
+
+
+
+
+
+
+
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+    <script src="{%static 'ressources/js/scriptsidebar.js'%}"></script>
+</body>
+{% endblock %}

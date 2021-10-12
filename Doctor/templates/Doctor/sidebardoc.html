@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{%static 'vendors/css/all.css'%}" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Asap&family=Lato:wght@100;300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="{%static 'ressources/css/styledashuser.css'%}" />
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=ELzEfNYhJv2qTxrl2_xmf90c6IKb8NE7m-ZeOU6UozV6597yIJ75xEZNO1GYWz2ay-z_GvocWA5LQsYg2gsYBM4tZc9uVujPLm_5XbtKBdIG6uws32DBSs0hgfesIGPBACtUhZS3jWpFWxc4BlP2k52iAI3PA14NpJRFmo5-OymeKgKGAs9KkOqzgg-8culq8ZG6eutLxGGupIVgjuf87lTl-RtlDuxQ8-quUXq_5feCSCsDQ3ns9Z_7mkdCxaoEw9C0PlbEyLvVe68BjinZAdMM3wp_hUhvMzV7WuTsMKYSQcVCoSntueSM8vvcPiUpY8pDx48TaW0sR-wVWfd8Y6rSEvqMFwDz-eruodIOfYGkLFbHW7wMU63AqGaHLpK4rK2A-maj6_PAh5YVemny3Jk70n5ublWce7FE63JzyMQLgcShSzeNpM9mLeMglpj36Zk9tAi7JNODPDFIddGNj4LI-RMJsMHECr_PgJtX37tehLl3zVx6BE8wCmBjm7z5ajsLKkf4lRWGNIG_iDHDEO9gUmU8ah_bGYTCxyMfgvu3Tk0HtnYM2Rt_V33Mp-F8XE0OeYOGBA2ra9ROOvHHBhK29cMzfCQBHHnDTAtYyxyTdJWwzIgQwFid5Y8-gdBRPz-Mw_edsHGavpKqRgTEldPso_yh9Jo_B3kmuWDhcn8u6Q-maQXELODGbun5JSeX1EZaWoG9BUduOLpS_ZRLxSQBt3pDUHnmmejUR3A4sneMtJud5pmzV0TFe5qNTZTUMDvq0ssEsrPlCfuDR8Xa7YQcPpA-wvEVYkxE48Z0nunB1Nj-8dvFYykEpulM4dTTn611kY3Z2F9ACsGWCSr0ZURlPCDIAiAMQhy6EVvpiHMhtl4E39qySvdCA2KVnQt9jFU42AvXGwx8-gxH6-51HSDBml6FGG0WDDn1fdqW-qyJO1NGCosIIRAqHOzdR9ClHlfCyYslR623lf22H-9nlaI5DHrVn0aexllGvbCqFfxDp7GnZwNWN5nCn798nfa_3Oy_sL44Jnrb-YLv3VC6aab9AK-M6x1iN5TbvoBgjEeKjVJOb4TTWZwe8JUweESx2V5iUeC6Ml0fRhG5IsrBka_NNk9QeMoRq9lDt6BFclWzPqmdehiC-fNiwJmOOdwLeARDoxZHqnAsmQXlcZ1HmV9w83FJEH12MjQAYhiN9KffqI3PGzeJeJHMI1xGbLbpgFSKqOsiP_XQQlL785C9Ew" nonce="8fdc1a9d5ad3480119e6b664e20c851c" charset="UTF-8"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <title>Dashboard Doctor</title>
+
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-md-2 sidebar" id="sidebar">
+        <div
+          class="sidebar-head d-flex justify-content-center align-items-center"
+        >
+          <img
+            src="{%static 'ressources/img/profile.jpg'%}"
+            style="
+              height: 100px;
+              width: 100px;
+              border-radius: 50%;
+              margin: 0;
+              padding: 0;
+            "
+            alt="profile picture"
+          />
+        </div>
+        <div>
+          <ul class="list-group mb-5">
+            <a class="list-group-item activée" href="/doctordash1"
+              ><span><i class="fas fa-home"></i></span>Tableau de Bord</a
+            >
+            <a class="list-group-item" href="/doctordash2"
+              ><span><i class="far fa-calendar-alt"></i></span>calendar</a
+            >
+            <a class="list-group-item" href="/doctordash3"
+              ><span><i class="fas fa-users"></i></span>mes patients</a
+            >
+            <a class="list-group-item" href="/doctordash4"
+              ><span><i class="fas fa-file-alt"></i></span> Consultations</a
+            >
+            <a class="list-group-item" href="/doctordash5"
+              ><span><i class="far fa-file-alt"></i></span> Certifs
+            </a>
+            <a class="list-group-item" href="/doctordash6"
+              ><span><i class="fas fa-file-medical"></i></span>Ordenances
+            </a>
+            <a class="list-group-item item10" href="/doctordash7"><i class="far fa-file-alt"></i></span>Assurances</a>
+            <a class="list-group-item" href="/doctordash8"
+              ><span> <i class="fas fa-money-check-alt"></i> </span>Paiements</a
+            >
+            <a class="list-group-item" href="/doctordash9"
+              ><span><i class="far fa-file-alt"></i></span> Médicaments</a
+            >
+            <a
+              href="/logout"
+              class="btn empty exit mt-5 ml-auto mr-auto"
+              style="border-radius: 35px"
+              >Déconnexion</a
+            >
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-10 content">
+
+
+
+       <div style="margin-left:20px">
+        {% block content %}
+
+
+
+        {% endblock %}
+       </div>
+      </div>
+    </div>
+    <!--back to top button-->
+    <a
+      id="back-to-top"
+      href="#"
+      class="btn btn-light btn-lg back-to-top"
+      role="button"
+      ><i class="fas fa-chevron-up"></i
+    ></a>
+
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
+    <script
+      src="http://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+      integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      google.charts.load("current", { packages: ["bar"] });
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ["Age", "Hommes", "Femmes"],
+          ["0-18", 750, 623],
+          ["18-35", 1170, 460],
+          ["35-60", 660, 1120],
+          ["+60", 1030, 540],
+        ]);
+
+        var options = {
+          chart: {
+            title: ".",
+            subtitle: ". ",
+          },
+        };
+
+        var chart = new google.charts.Bar(
+          document.getElementById("columnchart_material")
+        );
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+    <script src="{%static 'ressources/js/scriptsidebar.js'%}"></script>
+  </body>
+</html>

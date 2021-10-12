@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+{% extends 'Doctor/sidebardoc.html'%}
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{%static 'vendors/css/all.css'%}" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Asap&family=Lato:wght@100;300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="{%static 'ressources/css/signinstyle.css'%}" />
+    <title>Edit Patient</title>
+    
+  </head>
+{% block content %}
+  <body>
+    <div class="sidenav">
+      <div class="login-main-text">
+        <h2>Détailles de Consultation numéro 1</h2>
+      </div>
+    </div>
+    <div class="main d-flex align-items-center" style="min-height: 100vh;">
+      <div class="col-md-6 col-sm-12">
+        <div class="login-form">
+          <form method="post">
+            {%csrf_token%}
+            <div class="form-group">
+              <input
+                type="text"
+                name="Nom"
+                id="Nom"
+                class="form-control"
+                placeholder="Nom"
+                value="koussay"
+                readonly
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                name="Prénom"
+                id="Prénom"
+                class="form-control"
+                placeholder="Prénom"
+                value="Fridhi"
+                readonly
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="datetime-local"
+                name="date-heure"
+                id="date-heure"
+                class="form-control"
+                value="2021-06-13"
+                readonly
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                name="maladies"
+                id="maladies"
+                class="form-control"
+                placeholder="Maladies"
+                value="Grippe"
+                readonly
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                name="medicaments"
+                id="medicaments"
+                class="form-control"
+                placeholder="Médicaments"
+                value="grippex"
+                readonly
+              />
+            </div>
+            <div class="form-group">
+              <textarea
+                name="description"
+                id="description-consultation"
+                cols="30"
+                rows="10"
+                class="form-control"
+                readonly
+              >
+état normal 
+certif 3 jours</textarea
+              >
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!--back to top button-->
+    <a
+      id="back-to-top"
+      href="#"
+      class="btn btn-light btn-lg back-to-top"
+      role="button"
+      ><i class="fas fa-chevron-up"></i
+    ></a>
+
+    <script
+      src="http://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+      integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+      crossorigin="anonymous"
+    ></script>
+    <script src="{%static 'ressources/js/scriptlog.js'%}"></script>
+  </body>
+{% endblock %}

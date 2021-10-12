@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+{% extends 'Doctor/sidebardoc.html'%}
+  <head>
+    {% load static %}
+    {% load widget_tweaks %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{%static 'vendors/css/all.css'%}" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Asap&family=Lato:wght@100;300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="{%static 'ressources/css/styledashuser.css'%}" />
+    <title>Dashboard Doctor</title>
+    
+  </head>
+{% block content %}
+   <body>
+    <div class="row">
+
+      <div class="col-md-10 content">
+        <a
+          class="btn mt-3 ml-2"
+          onclick="myFunction()"
+          style="color: #0097e6; font-size: 150%"
+          ><i class="fas fa-bars"></i
+        ></a>
+
+
+        <div class="container text-center mt-5 mb-5">
+          <button
+            class="btn empty mb-5"
+            data-toggle="collapse"
+            href="#form"
+            role="button"
+            aria-expanded="false"
+            aria-controls="collapseExample"
+          >
+            <span><i class="far fa-plus-square"></i></span> Ajouter Patient
+          </button>
+                      <form method="POST">
+                {%csrf_token%}
+                <!-- TEXT FIELD GROUPS -->
+                <div class="form-group">
+                    {% render_field userForm.first_name class="form-control" placeholder="First Name" %}
+                </div>
+                <div class="form-group">
+                    {% render_field userForm.last_name class="form-control" placeholder="Last Name" %}
+                </div>
+                <div class="form-group">
+                    {% render_field userForm.username class="form-control" placeholder="Username" %}
+                </div>
+                <div class="form-group">
+                    {% render_field userForm.email class="form-control form-control-lg" placeholder="Email" %}
+                    <small class="form-text text-muted">Your email will not ever be shared</small>
+                </div>
+                <div class="form-group">
+                    {% render_field patientForm.phone class="form-control" placeholder="Phone" %}
+                </div>
+                <div class="form-group">
+                    {% render_field patientForm.fixe class="form-control" placeholder="Fixe" %}
+                </div>
+                 <div class="form-group">
+                    {% render_field patientForm.adresse class="form-control" placeholder="Adress" %}
+                </div>
+                <!-- SELECT -->
+                <h5> Sexe :</h5>
+                <div class="form-group" id="gender">
+                     {% render_field patientForm.genre class="form-control" placeholder="gender" %}
+                </div>
+
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2 pt-2">
+                            <label for="age">Date Naissance</label>
+                        </div>
+                        <div class="col">
+
+                            {% render_field patientForm.date_naiss type="date" class="form-control" placeholder="date_naiss" %}
+                        </div>
+                    </div>
+                </div>
+                <h5> Pays :</h5>
+                <div class="form-group">
+                   {% render_field patientForm.code_pays class="form-control" placeholder="code_pays" %}
+                </div>
+                <div class="form-group">
+                    {% render_field userForm.password class="form-control" placeholder="password" %}
+                 </div>
+
+                <br>
+                 <button type="submit" name="submit" class="btn empty" value="registration"  id="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="container text-center" style="margin-right:450px; ">
+          <h1>Liste des patients</h1>
+          <table class="table" >
+            <thead>
+              <th>id Patient</th>
+              <th>Nom</th>
+              <th>Email</th>
+              <th>Âge</th>
+              <th>Tél</th>
+              <th>fixe</th>
+              <th>Genre</th>
+              <th>Pays</th>
+              <th>Maladies</th>
+              <th>assurance</th>
+              <th>
+                <span><i class="fas fa-edit"></i></span> Edit
+              </th>
+              <th>Supprimer</th>
+            </thead>
+            <tbody>
+            {%for i in user%}
+                      <tr>
+                        <td data-label="id Patient">{{i.username}}</td>
+                        <td data-label="Nom">{{i.first_name}} {{i.last_name}}</td>
+                        <td data-label="Email">{{i.email}}</td>
+                        <td id="age" ></td>
+
+                        <td data-label="Tél">{{i.patient.phone}}</td>
+                        <td data-label="genre">{{i.patient.fixe}}</td>
+                        <td data-label="genre">{{i.patient.genre}}</td>
+                        <td data-label="Pays">{{i.patient.code_pays}}</td>
+                        <td data-label="Maladies" id="his">
+                           {%for h in hist_mala%}
+                             {%if h.id_patient == i.patient%}
+                                 {{h.id_maladie}}
+                             {%endif%}
+                          {%endfor%}
+                        </td>
+                        <td data-label="Assurances" id="assurance">
+                          {%for a in assu%}
+                             {%if a.patient == i.patient%}
+                                 {{a.id_organism}}
+                             {%endif%}
+                          {%endfor%}
+                        </td>
+                        <td data-label="Edit">
+                          <button
+                            class="btn full"
+                            target="blank"
+                            onclick="redir()"
+                            >
+                            <i class="fas fa-edit"></i>
+                          </button>
+                        </td>
+                          <script>
+                              function redir () {
+                                  window.location.replace("/edit-patient/{{i.username}}");
+                              }
+                          </script>
+                        <td data-label="Supprimer">
+                          <button class="btn empty exit" onclick="redir2()">
+                            <i class="fas fa-user-minus"></i>
+                          </button>
+                        </td>
+                          <script>
+                              function redir2 () {
+                                  window.location.replace("/delete-patient/{{i.username}}");
+                              }
+                          </script>
+
+                      </tr>
+                  <script>
+                        var c = {{i.patient.date_naiss.year}};
+                        var b = {{yearnow}};
+                        a = b-c ;
+                        document.getElementById("age").innerHTML = a ;
+                  </script>
+            {%endfor%}
+            </tbody>
+          </table>
+
+
+
+        </div>
+      </div>
+    </div>
+    <!--back to top button-->
+    <a
+      id="back-to-top"
+      href="#"
+      class="btn btn-light btn-lg back-to-top"
+      role="button"
+      ><i class="fas fa-chevron-up"></i
+    ></a>
+
+    <script
+      src="http://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+      integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+      crossorigin="anonymous"
+    ></script>
+    <script src="{%static 'ressources/js/scriptsidebar.js'%}"></script>
+  </body>
+{% endblock %}

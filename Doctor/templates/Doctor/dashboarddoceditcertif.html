@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+{% extends 'Doctor/sidebardoc.html'%}
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{%static 'vendors/css/all.css'%}" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Asap&family=Lato:wght@100;300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="{%static 'ressources/css/signinstyle.css'%}" />
+    <title>Edit Certif</title>
+    
+  </head>
+ {% block content %}
+  <body>
+    <div class="sidenav">
+      <div class="login-main-text">
+        <h2>Détailles de Certif 1</h2>
+      </div>
+    </div>
+    <div class="main d-flex align-items-center" style="min-height: 100vh">
+      <div class="col-md-6 col-sm-12">
+        <div class="login-form">
+          <form method="post">
+            {%csrf_token%}
+            <div class="group-form">
+              <div class="row">
+                <div class="col-md-3">
+                  <label for="nom-org">Nom Organisme</label>
+                </div>
+                <div class="col">
+                  <input
+                    type="text"
+                    name="nom-organisme"
+                    id="nom-org"
+                    class="form-control"
+                    placeholder="Nom Organisme"
+                    value="CNAM"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-3 pt-2">
+                  <label for="nom">Nom Patient</label>
+                </div>
+                <div class="col">
+                  <input
+                    type="text"
+                    name="Nom"
+                    id="nom"
+                    class="form-control"
+                    placeholder="Nom Patient"
+                    value="Koussay"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-3">
+                  <label for="prenom">Prénom Patient</label>
+                </div>
+                <div class="col pt-1">
+                  <input
+                    type="text"
+                    name="prénom"
+                    id="prenom"
+                    class="form-control"
+                    placeholder="Prénom Patient"
+                    value="Fridhi"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-3 pt-2">
+                    <label for="id-ass">Id Assurance</label>
+                  </div>
+                  <div class="col pt-2">
+                    <input
+                      type="text"
+                      name="id-ass"
+                      id="id-ass"
+                      class="form-control"
+                      placeholder="Id Assurance"
+                      value="12719366"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <br />
+
+            <button href="#" class="btn empty">enregistrer</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!--back to top button-->
+    <a
+      id="back-to-top"
+      href="#"
+      class="btn btn-light btn-lg back-to-top"
+      role="button"
+      ><i class="fas fa-chevron-up"></i
+    ></a>
+
+    <script
+      src="http://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+      integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+      crossorigin="anonymous"
+    ></script>
+    <script src="{%static 'ressources/js/scriptlog.js'%}"></script>
+  </body>
+{% endblock %}

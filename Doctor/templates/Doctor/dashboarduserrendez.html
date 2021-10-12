@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+{% extends 'Doctor/navbarandsidebar.html'%}
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{%static 'vendors/css/all.css'%}" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Asap&family=Lato:wght@100;300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{%static 'ressources/css/styledashuser.css'%}"
+    />
+    <title>Dashboard User</title>
+
+  </head>
+{% block content %}
+  <body>
+    <div class="container text-center">
+    <h1>Rendez-Vous à venir</h1>
+    <table class="table">
+
+      <thead>
+           <th>id rendez-vous</th>
+           <th>Date</th>
+
+           <th>état</th>
+      </thead>
+      <tbody>
+      {%for r in rdv_future%}
+        <tr>
+
+              <td data-label="id rendez-vous">{{r.id_rdv}}</td>
+              <td data-label="Date">{{r.date}}</td>
+              <td data-label="état">Confirmé</td>
+
+        </tr>
+      {%endfor%}
+      </tbody>
+    </table>
+    <h1>Rendez-Vous déja fait </h1>
+    <table class="table">
+      <thead>
+
+              <th>id rendez-vous</th>
+              <th>Date</th>
+              <th>état</th>
+
+
+      </thead>
+      <tbody>
+         {%for r in rdv_past%}
+              <tr>
+                <td data-label="id rendez-vous">{{r.id_rdv}}</td>
+                <td data-label="Date">{{r.date}}</td>
+                <td data-label="état">Confirmé</td>
+              </tr>
+         {%endfor%}
+      </tbody>
+    </table>
+         <h2 style="color:#0097e6;padding-top:25px;" id="001"> </h2>
+    <h1>Demander un rendez-vous</h1>
+    <!-- FORM -->
+    <form method="post">
+      {%csrf_token%}
+
+      <button
+        class="btn empty"
+        onclick="message()"
+        name="RDV"
+        value="RDV"
+      >
+        Appuyer Pour Demander Un Rendez Vous
+      </button>
+
+    </form>
+
+  </div>
+   <script>
+        function message ()
+        {
+
+        document.getElementById("001").innerHTML = " Notre Cabinet Va Vous Contacter Pendant 24 Heures ";
+        }
+   </script>
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+  <script src="{%static 'ressources/js/script.js'%}"></script>
+  </body>
+{% endblock %}

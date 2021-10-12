@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{%static 'vendors/css/all.css'%}" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Asap&family=Lato:wght@100;300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="{%static 'ressources/css/styledashuser.css'%}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <title>Dashboard Doctor</title>
+    
+  </head>
+
+  <body>
+
+    <div class="row">
+      <div class="col-md-2 sidebar" id="sidebar">
+        <div
+          class="sidebar-head d-flex justify-content-center align-items-center"
+        >
+          <img
+            src="{%static 'ressources/img/profile.jpg'%}"
+            style="
+              height: 100px;
+              width: 100px;
+              border-radius: 50%;
+              margin: 0;
+              padding: 0;
+            "
+            alt="profile picture"
+          />
+        </div>
+        <div>
+          <ul class="list-group mb-5">
+            <a class="list-group-item activée" href="/doctordash1"
+              ><span><i class="fas fa-home"></i></span>Tableau de Bord</a
+            >
+            <a class="list-group-item" href="/doctordash2"
+              ><span><i class="far fa-calendar-alt"></i></span>calendar</a
+            >
+            <a class="list-group-item" href="/doctordash3"
+              ><span><i class="fas fa-users"></i></span>mes patients</a
+            >
+            <a class="list-group-item" href="/doctordash4"
+              ><span><i class="fas fa-file-alt"></i></span> Consultations</a
+            >
+            <a class="list-group-item" href="/doctordash5"
+              ><span><i class="far fa-file-alt"></i></span> Certifs
+            </a>
+            <a class="list-group-item" href="/doctordash6"
+              ><span><i class="fas fa-file-medical"></i></span>Ordenances
+            </a>
+            <a class="list-group-item item10" href="/doctordash7"><i class="far fa-file-alt"></i></span>Assurances</a>
+            <a class="list-group-item" href="/doctordash8"
+              ><span> <i class="fas fa-money-check-alt"></i> </span>Paiements</a
+            >
+            <a class="list-group-item" href="/doctordash9"
+              ><span><i class="far fa-file-alt"></i></span> Médicaments</a
+            >
+            <a
+              href="/logout"
+              class="btn empty exit mt-5 ml-auto mr-auto"
+              style="border-radius: 35px"
+              >Déconnexion</a
+            >
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-10 content">
+        <a
+          class="btn mt-3 ml-2"
+          onclick="myFunction()"
+          style="color: #0097e6; font-size: 150%"
+          ><i class="fas fa-bars"></i
+        ></a>
+
+        <div class="row mt-5 mb-5">
+          <div
+            class="
+              card
+              cards
+              border-info
+              bg-light
+              col-md-2
+              mr-1
+              ml-auto
+              text-center
+            "
+          >
+            <div class="card-body">
+              <h4 class="card-title">
+                <span> <i class="fas fa-users"></i> </span><br />
+                Patients
+              </h4>
+              <p class="card-text" id="nbr-patient">{{nbrpatient}}</p>
+            </div>
+          </div>
+          <div class="card cards border-info col-md-2 mr-1 ml-1 text-center">
+            <div class="card-body">
+              <h4 class="card-title">
+                <span> <i class="fas fa-divide"></i> </span><br />
+                Âge moyen
+              </h4>
+              <p class="card-text" id="age">{{age_moy}}</p>
+            </div>
+          </div>
+          <div class="card cards border-info col-md-2 mr-1 ml-1 text-center">
+            <div class="card-body">
+              <h4 class="card-title">
+                <span> <i class="far fa-calendar"></i> </span><br />ce mois-ci
+              </h4>
+              <p class="card-text" id="ce-mois">{{monthconsult}}</p>
+            </div>
+          </div>
+          <div class="card cards border-info col-md-2 mr-auto ml-1 text-center">
+            <div class="card-body">
+              <h4 class="card-title">
+                <span> <i class="fas fa-user-md"></i> </span><br />Consultations
+              </h4>
+              <p class="card-text" id="consultation-patient">{{dayconsult}}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card chart">
+          <h2 class="card-title bg-dark">
+            Nombre de patients par tranche d'âge et sexe
+          </h2>
+          <div class="card-body">
+            <div id="columnchart_material"></div>
+          </div>
+        </div>
+        <div class="row ml-auto mr-auto">
+          <div class="col-md-6">
+            <div class="card">
+              <h2 class="card-title" style="background-color: #00a8ff">
+                Les 10 patients les plus suivis
+              </h2>
+              <div class="card-body">
+                <table class="table">
+                  <thead style="background-color: #44bd32">
+                    <th style="background-color: #44bd32">#</th>
+                    <th style="background-color: #44bd32">Nom</th>
+                    <th style="background-color: #44bd32">Prénom</th>
+                    <th style="background-color: #44bd32">nbr Consultations</th>
+                  </thead>
+                  <tbody>
+                  {%for i in lista3 %}
+                    <tr>
+                      <td data-label="#">{{i}}</td>
+                      <td data-label="Nom">{{i.first_name}}</td>
+                      <td data-label="Prénom">{{i.last_name}}</td>
+                      <td data-label="nbr Consultations">{{ i.lista4}}</td>
+                    </tr>
+                  {%endfor%}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card">
+              <h2 class="card-title" style="background-color: #00a8ff">
+                Les 10 patients qui ont manqué le plus de RDV
+              </h2>
+              <div class="card-body">
+                <table class="table">
+                  <thead style="background-color: #e84118">
+                    <th style="background-color: #e84118">#</th>
+                    <th style="background-color: #e84118">Nom</th>
+                    <th style="background-color: #e84118">Prénom</th>
+                    <th style="background-color: #e84118">nbr RDV ratés</th>
+                  </thead>
+                  <tbody>
+                   {%for i in lista1 %}
+                    <tr>
+                      <td data-label="#">{{i}}</td>
+                      <td data-label="Nom">{{i.first_name}}</td>
+                      <td data-label="Prénom">{{i.last_name}}</td>
+                      <td data-label="nbr RDV ratés">{{ i.lista2 }}</td>
+                    </tr>
+                  {%endfor%}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--back to top button-->
+    <a
+      id="back-to-top"
+      href="#"
+      class="btn btn-light btn-lg back-to-top"
+      role="button"
+      ><i class="fas fa-chevron-up"></i
+    ></a>
+
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
+    <script
+      src="http://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+      integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      google.charts.load("current", { packages: ["bar"] });
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ["Age", "H", "F"],
+          ["0-18", {{count018mas}}, {{count018fem}}],
+          ["18-35", {{count1935mas}}, {{count1935fem}}],
+          ["35-60", {{count3660mas}}, {{count3660fem}}],
+          ["+60", {{count61mas}}, {{count61fem}}],
+        ]);
+
+        var options = {
+          chart: {
+            title: ".",
+            subtitle: ". ",
+          },
+        };
+
+        var chart = new google.charts.Bar(
+          document.getElementById("columnchart_material")
+        );
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+    <script src="{%static 'ressources/js/scriptsidebar.js'%}"></script>
+  </body>
+</html>
+

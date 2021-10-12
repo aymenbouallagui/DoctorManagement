@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'vendors/css/all.css'%}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Asap&family=Lato:wght@100;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="{%static 'ressources/css/style.css'%}">
+        <title>Cabinet</title>
+
+</head>
+<body>
+    <header style="background-image:url({%static 'ressources/css/img/bg.jpg'%});">
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark sticky-top" id="main-nav">
+            <div class="container">
+            <a href="index.html" class="navbar-brand">
+                <span id="dr">Dr.</span>
+                <span>Koussay</span>
+            </a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#offers" class="nav-link">Offers</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#gallery" class="nav-link">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#tarif" class="nav-link">Tarif</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#mobile-app" class="nav-link">Mobile-App</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#rendez-vous" class="nav-link">Rendez-vous</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/signinuser" class="btn empty">Sign In</a>
+                </li>
+                </ul>
+            </div>
+            </div>
+        </nav>
+        
+        <div class="container head" style="height:100vh;" id="h1">
+            
+                <div class="col">    
+                    <h1>Lorem, ipsum dolor sit amet <br> consectetur  elit. </h1>
+                </div>
+                    <div class="col">
+                        <a href="/login" class="btn full">Log In</a>
+                        <a href="#rendez-vous" class="btn empty">rendez-vous</a>  
+                    </div>
+        </div>
+        
+    </header>
+    <!--specs-->
+    <section class="section1" id="offers">
+        <h2>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</h2>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque incidunt vero dignissimos sapiente delectus!<br> Soluta aut neque amet incidunt fuga ipsa, placeat quo quod!</p>
+        <div class="container row">
+            <div class="col-md-3">
+                <i class="fab fa-bitcoin icons"></i><br>
+                <h3>title</h3>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam odit distinctio tempore atque expedita vel molestias sunt illo corporis corrupti architecto voluptates facilis, eveniet aspernatur eligendi optio quam blanditiis rem.
+            </div>
+            <div class="col-md-3">
+                <i class="fas fa-archive icons"></i><br>
+                <h3>title</h3>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos dolores illum cumque iste exercitationem explicabo iusto, id quis debitis, eligendi facere eius fugit officiis quisquam ex tempora neque, quaerat dicta!
+
+            </div>
+            <div class="col-md-3">
+                <i class="fas fa-bell icons"></i><br>
+                <h3>title</h3>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos dolores illum cumque iste exercitationem explicabo iusto, id quis debitis, eligendi facere eius fugit officiis quisquam ex tempora neque, quaerat dicta!
+                
+            </div>
+            <div class="col-md-3">
+                <i class="fas fa-address-card icons"></i><br>
+                <h3>title</h3>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos dolores illum cumque iste exercitationem explicabo iusto, id quis debitis, eligendi facere eius fugit officiis quisquam ex tempora neque, quaerat dicta!
+                
+            </div>
+
+        </div>
+    </section>
+    <!--Image Gallery-->
+    <section class="section2" id="gallery" class="py-5">
+        <div class="container">
+            <h2>Photo Gallery</h2>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem, ad. Fugit consequuntur odio eveniet eum in voluptatum</p>
+            <div class="row mb-4">
+                <div class="col-md-4">
+                  <a href="https://source.unsplash.com/random/560x560" data-toggle="lightbox" data-gallery="img-gallery" data-height="560"
+                    data-width="560">
+                    <img src="https://source.unsplash.com/random/560x560" alt="" class="img-fluid">
+                  </a>
+                </div>
+        
+                <div class="col-md-4">
+                  <a href="https://source.unsplash.com/random/561x561" data-toggle="lightbox" data-gallery="img-gallery" data-height="561"
+                    data-width="561">
+                    <img src="https://source.unsplash.com/random/561x561" alt="" class="img-fluid">
+                  </a>
+                </div>
+        
+                <div class="col-md-4">
+                  <a href="https://source.unsplash.com/random/562x562" data-toggle="lightbox" data-gallery="img-gallery" data-height="562"
+                    data-width="562">
+                    <img src="https://source.unsplash.com/random/562x562" alt="" class="img-fluid">
+                  </a>
+                </div>
+              </div>
+        
+              <div class="row mb-4">
+                <div class="col-md-4">
+                  <a href="https://source.unsplash.com/random/563x563" data-toggle="lightbox" data-gallery="img-gallery" data-height="563"
+                    data-width="563">
+                    <img src="https://source.unsplash.com/random/563x563" alt="" class="img-fluid">
+                  </a>
+                </div>
+        
+                <div class="col-md-4">
+                  <a href="https://source.unsplash.com/random/564x564" data-toggle="lightbox" data-gallery="img-gallery" data-height="564"
+                    data-width="564">
+                    <img src="https://source.unsplash.com/random/564x564" alt="" class="img-fluid">
+                  </a>
+                </div>
+        
+                <div class="col-md-4">
+                  <a href="https://source.unsplash.com/random/565x565" data-toggle="lightbox" data-gallery="img-gallery" data-height="565"
+                    data-width="565">
+                    <img src="https://source.unsplash.com/random/565x565" alt="" class="img-fluid">
+                  </a>
+                </div>
+              </div>
+        </div>
+        <!--Tarif-->
+        <section class="section3" id="tarif">
+            <div class="container">
+                <h2>Tarif</h2>
+                <div class="row">
+                    <div class="col-md-3 box">
+                        <div class="box-head">
+                            <h3>Basic</h3>
+                            <span class="big">50$</span><span class="small">per visit</span>
+                        </div>
+                        <div class="box-body">
+                            <div class="advantages">
+                                <i class="fas fa-check icon-small check"></i>
+                                offer1
+                            </div>
+                            <div class="advantages">
+                                <i class="fas fa-check icon-small check"></i>
+                                offer1
+                            </div>
+                            <div class="advantages">
+                                <i class="fas fa-times icon-small uncheck"></i>
+                                offer1
+                            </div>
+                            <div class="advantages">
+                                <i class="fas fa-times icon-small uncheck"></i>
+                                offer1
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <a href="login.html" class="btn empty">rendez-vous</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 box">
+                        <div class="box-head">
+                            <h3>Basic</h3>
+                            <span class="big">50$</span><span class="small">per visit</span>
+                        </div>
+                        <div class="box-body">
+                            <div class="advantages">
+                                <i class="fas fa-check icon-small check"></i>
+                                offer1
+                            </div>
+                            <div class="advantages">
+                                <i class="fas fa-check icon-small check"></i>
+                                offer1
+                            </div>
+                            <div class="advantages">
+                                <i class="fas fa-check icon-small check"></i>
+                                offer1
+                            </div>
+                            <div class="advantages">
+                                <i class="fas fa-times icon-small uncheck"></i>
+                                offer1
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <a href="login.html" class="btn empty">rendez-vous</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 box">
+                        <div class="box-head">
+                            <h3>Basic</h3>
+                            <span class="big">50$</span><span class="small">per visit</span>
+                        </div>
+                        <div class="box-body">
+                            <div class="advantages">
+                                <i class="fas fa-check icon-small check"></i>
+                                offer1
+                            </div>
+                            <div class="advantages">
+                                <i class="fas fa-check icon-small check"></i>
+                                offer1
+                            </div>
+                            <div class="advantages">
+                                <i class="fas fa-check icon-small check"></i>
+                                offer1
+                            </div>
+                            <div class="advantages">
+                                <i class="fas fa-check icon-small check"></i>
+                                offer1
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <a href="login.html" class="btn full">rendez-vous</a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        <section class="section4" id="mobile-app">
+            <div class="container">
+                <h2>HOW IT WORKS ─ SIMPLE AS 1, 2, 3</h2>
+                <div class="row">
+                    <div class="col-md-7">
+                        <img src="{%static 'ressources/img/app-iPhone.png'%}" alt="app" class="js--wp-1">
+                    </div>
+                    <div class="col-md-5 app-box">
+                        <div class="ligne">
+                            <div class="numbers">1</div>
+                            <div class="text">Choose the subscription plan that best fits your needs and sign up today.</div>
+                        </div>
+                        <div class="ligne">
+                            <div class="numbers">2</div>
+                            <div class="text">Choose the subscription plan that best fits your needs and sign up today.</div>
+                        </div>
+                        <div class="ligne">
+                            <div class="numbers">3</div>
+                            <div class="text">Choose the subscription plan that best fits your needs and sign up today.</div>
+                        </div>
+                        <div class="ligne">
+                            <a href="#"><i class="fab fa-google-play app-icon google-play"></i></a>
+                            <a href="#"><i class="fab fa-app-store-ios app-icon ios"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--costumers rating-->
+        <section class="section5" id="ratings">
+            <div class="container"><h2>Our customers can't live without us</h2> </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <blockquote><!--customer opinion-->
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate doloribus at atque consectetur provident illo facilis dolores, magni illum, culpa nisi cupiditate vel iure rem iste suscipit! Optio, consequuntur earum.<br>
+                            <cite> <!--customer image--><img src="{%static 'ressources\img\customer.jpg'%}" alt="costumer 1"><p> <!--customer name--> Alberto Duncan</p></cite>
+                        </blockquote>
+                    </div>
+                    <div class="col-sm-4">
+                        <blockquote><!--customer opinion-->
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum consequuntur rem ab quisquam qui officia non nesciunt maxime ipsum aspernatur amet, officiis nam dolores incidunt? Repudiandae hic nobis beatae architecto?<br>
+                        <cite> <!--customer image--><img src="{%static 'ressources\img\customer.jpg'%}" alt="costumer 2"><p> <!--customer name--> Joana Silva</p></cite>
+                    </blockquote>
+                    </div>
+                    <div class="col-sm-4">
+                    <blockquote><!--customer opinion-->
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur architecto debitis perspiciatis inventore laborum ab quam nemo iste exercitationem dolore distinctio accusantium dolores provident voluptatum nesciunt, illum veniam molestias blanditiis!<br>
+                            <cite> <!--customer image--><img src="{%static 'ressources\img\customer.jpg'%}" alt="costumer 3" ><p>Milton Chapman <!--customer name--></p></cite>
+                        </blockquote>
+                    </div>
+                </div>
+            </section>
+            <section class="section6" id="rendez-vous">
+                <div class="container">
+                    <div class="row ">
+                        <div class="col-sm-6 location">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3193.1176981529406!2d10.243370018463365!3d36.83965715248736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd35444ee304cb%3A0x928282fa81cab438!2zQ2xpbmlxdWUgQWx5c3NhINmF2LXYrdipINi52YTZitiz2Kk!5e0!3m2!1sfr!2stn!4v1621295113464!5m2!1sfr!2stn" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>                        </div>
+                        <div class="col-sm-6">
+                            <!-- FORM -->
+                            <form method="post">
+                                {%csrf_token%}
+                                {% for field in form %}
+
+
+                                      <div class="form-group ">
+                                          {{field.label_tag}}
+                                              {{field}}
+                                          {% for error in field.errors %}
+                                              <small style="color:red"> {{error}}</small>
+                                          {%endfor%}
+                                      </div>
+
+                                {%endfor%}
+                                <button name="SUBMIT"  VALUE="SUBMIT" class="btn empty">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            <footer class="bg-dark text-center text-white">
+                <div class="row">
+                    
+                    <div class="col-sm-6 about-us">
+                        <ul>
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#ratings">Ratings</a></li>
+                            <li><a href="#">iOS App</a></li>
+                            <li><a href="#">Android App</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6">
+                  <!-- Section: Social media -->
+                  <section class="mb-4">
+                    <!-- Facebook -->
+                    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                      ><i class="fab fa-facebook-f"></i
+                    ></a>
+              
+                    <!-- Twitter -->
+                    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                      ><i class="fab fa-twitter"></i
+                    ></a>
+              
+                    <!-- Instagram -->
+                    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                      ><i class="fab fa-instagram"></i
+                    ></a>
+                  </section>
+                </div>
+                  <!-- Section: Social media -->
+                </div>
+                <!-- Grid container -->
+              
+                <!-- Copyright -->
+                <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                  © <span id="year"></span> Copyright:
+                  <a class="text-white" href="#">Powered By WhiteBox team</a>
+                </div>
+                <!-- Copyright -->
+              </footer>
+              <div class="loader"></div>
+              <!--back to top button-->
+              <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"><i class="fas fa-chevron-up"></i></a>
+  
+
+
+
+
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+      crossorigin="anonymous"></script>
+    <script src="{%static 'ressources/js/script.js'%}"></script>
+    
+</body>
+</html>
